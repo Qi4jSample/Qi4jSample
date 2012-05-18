@@ -25,10 +25,16 @@ public class CharacterBuilder {
     }
 
     public Warrior buildWarrior(String name, UnitOfWork unitOfWork) {
-        return getBuilderFor(Warrior.class, name, unitOfWork).newInstance();
+        final EntityBuilder<Warrior> warriorBuilder = getBuilderFor(Warrior.class, name, unitOfWork);
+        final Attacker.AttackerStats attackerStats = warriorBuilder.instanceFor(Attacker.AttackerStats.class);
+        attackerStats.strength().set(10);
+        return warriorBuilder.newInstance();
     }
 
     public Worker buildWorker(String name, UnitOfWork unitOfWork) {
-        return getBuilderFor(Worker.class, name, unitOfWork).newInstance();
+        final EntityBuilder<Worker> medicBuilder = getBuilderFor(Worker.class, name, unitOfWork);
+        final Attacker.AttackerStats attackerStats = medicBuilder.instanceFor(Attacker.AttackerStats.class);
+        attackerStats.strength().set(5);
+        return medicBuilder.newInstance();
     }
 }

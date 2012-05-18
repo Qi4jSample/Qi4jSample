@@ -11,12 +11,17 @@ import org.qi4j.api.property.Property;
 public interface Attacker {
     public void beat(Attackable attackable);
 
+    interface AttackerStats {
+        Property<Integer> strength();
+    }
+
     public class AttackerUnit implements Attacker {
 
-        private static final int STRENGTH = 10;
+        @This
+        AttackerStats attackerStats;
 
         public void beat(Attackable attackable) {
-            attackable.receiveDamage(STRENGTH);
+            attackable.receiveDamage(attackerStats.strength().get());
         }
     }
 }

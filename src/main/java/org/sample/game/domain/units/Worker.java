@@ -16,5 +16,6 @@ public interface Worker extends EntityComposite,
         Attackable,
         Healable,
         Builder,
-        Drunkard{
+        Attacker,
+        Drunkard {
 }

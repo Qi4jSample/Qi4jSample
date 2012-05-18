@@ -51,6 +51,11 @@ public class SampleInteraction {
         RepairBuildingsContext repairBuildingsContext = new RepairBuildingsContext(worker, Arrays.asList(barn));
         repairBuildingsContext.repair();
         logAll();
+
+        System.out.println("Workers revenge.");
+        attackEnemiesContext = new AttackEnemiesContext(worker, Arrays.asList(warrior));
+        attackEnemiesContext.fight();
+        logAll();
     }
 
     private void logAll() {
